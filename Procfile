@@ -1,1 +1,1 @@
-web: gunicorn todoapi:app
+web: python server-waitress.py

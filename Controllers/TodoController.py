@@ -23,6 +23,8 @@ class TodoController:
         data = request.get_json()
         if not data["heading"] or not data["body"]:
             return jsonify(message="Invalid data submitted"), 400 
+
+        print(data)
         heading = data["heading"]
         body = data["body"]
         colorCode = data["colorCode"]

@@ -1,1 +1,1 @@
-web: python server-waitress.py
+web: gunicorn app:app

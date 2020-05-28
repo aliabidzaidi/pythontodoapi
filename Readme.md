@@ -26,9 +26,27 @@ or if you create a return method ( won't work here )
 
 ## Running with Gunicon (__preferred__)
 
+(heroku uses this from Procfile)
+```
+gunicorn app:app
 ```
 
+## For Cloud DB
+
+set environment variables with values from windows command line:
+
 ```
+set IS_CLOUD=TRUE
+set MONGODB_URL=mongodb+srv://user:pass@cluster0-2abcde.mongodb.net/dbname
+```
+
+set environment variables in heroku client  (CICD pipeline is set)
+```
+heroku login
+heroku config:set IS_CLOUD=TRUE
+heroku config:set MONGODB_URL=mongodb+srv://user:pass@cluster0-2abcde.mongodb.net/dbname
+```
+
 
 ## Creating production with Wheel file
 

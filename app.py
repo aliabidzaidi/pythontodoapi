@@ -1,8 +1,9 @@
 from todoapi import app
-import config
+import os
 
 if __name__ == "__main__":
-    if config.cloud_config:
-        app.run()
-    else:
+    isCloud = os.environ.get('IS_CLOUD', None)
+    if isCloud is None or isCloud != 'TRUE':
         app.run(host='127.0.0.1', port=5000, debug=True)
+    else:
+        app.run()

@@ -20,7 +20,8 @@ class TodoController:
                 todoList.append(todo.asdict())
             return jsonify(data=todoList, count=todoCount), 200
         except Exception as ex:
-            return jsonify(message="An error occurred", error=ex.message), 500
+            print('exception occurrrrrred! look: ', ex)
+            return jsonify(message="An error occurred"), 500
         
 
     def addTodo(self):

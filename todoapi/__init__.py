@@ -26,7 +26,7 @@ else:
 
 @app.route("/", methods=['GET'])
 def index():
-    return "api works.."
+    return jsonify(message="Api works.."), 200
 
 
 @app.route("/todos", methods=['GET'])
@@ -35,7 +35,26 @@ def todos():
     return obj.getTodos()
 
 
+@app.route("/todo/<id>", methods=['GET'])
+def get_todo(id):
+    obj = TodoController()
+    print(id)
+    return obj.getTodo(id)
+
+
 @app.route("/todos/add", methods=['POST'])
 def add_todo():
     obj = TodoController()
     return obj.addTodo()
+
+
+@app.route("/todo/<id>", methods=['PUT'])
+def edit_todo(id):
+    obj = TodoController()
+    return obj.editTodo(id)
+
+
+@app.route("/todo/<id>", methods=['DELETE'])
+def delete_todo(id):
+    obj = TodoController()
+    return obj.deleteTodo(id)

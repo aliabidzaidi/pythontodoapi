@@ -15,8 +15,8 @@ class TodoController:
             # Todo.objects returns of mongodb
             # It is not a python dictionary
             # mongoDB [<Todo>, <Todo>, <Todo>] -> python list of dictionaries [ {Todo}, {Todo}, {Todo}]
-            todos = Todo.objects().skip(skip).limit(limit)
-            todoCount = Todo.objects().count()
+            todos = Todo.objects(isDeleted=False).skip(skip).limit(limit)
+            todoCount = Todo.objects(isDeleted=False).count()
             todoList = []
             for todo in todos:
                 todoList.append(todo.asdict())
@@ -98,7 +98,7 @@ class TodoController:
                 return jsonify(message="Todo not found"), 400
 
             todo.dateUpdated = datetime.datetime.now()
-            todo.is_deleted = True
+            todo.isDeleted = True
             todo.save()
             return jsonify(message='Todo deleted successfully'), 200
 
